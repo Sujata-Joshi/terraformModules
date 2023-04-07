@@ -12,7 +12,6 @@ variable "vnet_info" {
     vm_size              = string,
     public_ip            = string,
     admin_username       = string,
-    admin_password       = string,
     disk_name            = string,
     caching              = string,
     storage_account_type = string,
@@ -31,7 +30,6 @@ variable "vnet_info" {
     vm_size              = "Standard_B1s"
     public_ip            = "vm_public_ip"
     admin_username       = "sujata"
-    admin_password       = "Password@1234"
     disk_name            = "myosdisk1"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"

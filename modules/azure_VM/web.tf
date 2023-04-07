@@ -56,17 +56,18 @@ resource "azurerm_subnet_network_security_group_association" "subnet_association
 
 
 resource "azurerm_linux_virtual_machine" "main" {
-  count                           = length(var.vnet_info.vm_name)
-  name                            = var.vnet_info.vm_name[count.index]
-  location                        = azurerm_resource_group.ntierRG.location
-  resource_group_name             = azurerm_resource_group.ntierRG.name
-  network_interface_ids           = [element(azurerm_network_interface.ntireNIC.*.id, count.index)]
-  size                            = var.vnet_info.vm_size
-  admin_username                  = var.vnet_info.admin_username
-  admin_password                  = var.vnet_info.admin_password
-  disable_password_authentication = false
+  count                 = length(var.vnet_info.vm_name)
+  name                  = var.vnet_info.vm_name[count.index]
+  location              = azurerm_resource_group.ntierRG.location
+  resource_group_name   = azurerm_resource_group.ntierRG.name
+  network_interface_ids = [element(azurerm_network_interface.ntireNIC.*.id, count.index)]
+  size                  = var.vnet_info.vm_size
+  admin_username        = var.vnet_info.admin_username
 
-
+  admin_ssh_key {
+    username   = var.vnet_info.admin_username
+    public_key = file("~/.ssh/id_rsa.pub")
+  }
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-focal"
