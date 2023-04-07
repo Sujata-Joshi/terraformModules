@@ -6,7 +6,7 @@ variable "vnet_info" {
     resource_group       = string,
     vnet                 = string,
     network_interface    = string,
-    vm_name              = string,
+    vm_name              = list(string),
     ip_configuration     = string,
     address_allocation   = string,
     vm_size              = string,
@@ -25,7 +25,7 @@ variable "vnet_info" {
     resource_group       = "ntier_RG"
     vnet                 = "ntire_Vnet"
     network_interface    = "ntire_nic"
-    vm_name              = "ntireVM"
+    vm_name              = ["Red", "Green"]
     ip_configuration     = "testconfiguration1"
     address_allocation   = "Dynamic"
     vm_size              = "Standard_B1s"
