@@ -13,7 +13,7 @@ variable "aks_info" {
     rg_location       = "eastus"
     aks_name          = "aks-cluster"
     node_pool_name    = "node1"
-    node_count        = 2
+    node_count        = 1
     node_pool_vm_size = "Standard_D2_v2"
     identity-type     = "SystemAssigned"
   }
